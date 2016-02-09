@@ -6,11 +6,10 @@ using System.Web;
 
 namespace awareHouse.Models
 {
-    public class ZipCode
+    public class Employee
     {
         [Key]
-        public int zipcodeID { get; set; }
-        [Required]
-        public int zipCode { get; set; }
+        public int employeeID { get; set; }
+        public string employeeName { get; set; }
     }
 }
