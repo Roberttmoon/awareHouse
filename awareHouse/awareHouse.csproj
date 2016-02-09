@@ -9,7 +9,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{CD378F97-C7C7-4995-BAF7-D8A02265DEBB}</ProjectGuid>
+    <ProjectGuid>{1B8F2526-FF8B-4BF4-BF8B-CCA472E393F7}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -202,17 +202,23 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Addresses.cs" />
-    <Compile Include="Models\Location Models\Bay.cs" />
-    <Compile Include="Models\Location Models\Slot.cs" />
-    <Compile Include="Models\Location Models\Height.cs" />
+    <Compile Include="Models\DBModels\Address\CustomerAddress.cs" />
+    <Compile Include="Models\DBModels\Address\Address.cs" />
+    <Compile Include="Models\DBModels\Address\City.cs" />
+    <Compile Include="Models\DBModels\Customer.cs" />
+    <Compile Include="Models\DBModels\Employee.cs" />
+    <Compile Include="Models\DBModels\locations\Bay.cs" />
+    <Compile Include="Models\DBModels\locations\Height.cs" />
+    <Compile Include="Models\DBModels\Pallet.cs" />
+    <Compile Include="Models\DBModels\Touch.cs" />
+    <Compile Include="Models\EmployeeAddress.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Location Models\Row.cs" />
-    <Compile Include="Models\Location Models\PalletLocation.cs" />
-    <Compile Include="Models\Owner.cs" />
-    <Compile Include="Models\Pallet.cs" />
-    <Compile Include="Models\PalletTouch.cs" />
+    <Compile Include="Models\DBModels\locations\Row.cs" />
+    <Compile Include="Models\DBModels\locations\Slot.cs" />
+    <Compile Include="Models\DBModels\Address\State.cs" />
+    <Compile Include="Models\DBModels\Address\StreetAddress.cs" />
+    <Compile Include="Models\DBModels\Address\ZipCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -304,7 +310,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>2093</DevelopmentServerPort>
+          <DevelopmentServerPort>5481</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:2093/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

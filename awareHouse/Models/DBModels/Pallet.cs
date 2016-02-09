@@ -11,15 +11,10 @@ namespace awareHouse.Models
         [Key]
         public int palletID { get; set; }
         [Required]
-        public int palletLocationID { get; set; }
-        public virtual PalletLocation PalletLocation { get; set; }
         public DateTime inDate { get; set; }
         public DateTime outDate { get; set; }
+        public int customerID { get; set; }
         [Required]
-        public int shipToLocationID { get; set; }
-        public virtual Addresses Adresses {get; set;}
-        [Required]
-        public int ownerID { get; set; }
-        public virtual Owner Owner { get; set; }
-}
+        public Customer Customer { get; set; }
+    }
 }

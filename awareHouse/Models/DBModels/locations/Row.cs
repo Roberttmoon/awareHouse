@@ -6,11 +6,11 @@ using System.Web;
 
 namespace awareHouse.Models
 {
-    public class Slot
+    public class Row
     {
         [Key]
-        public int slotID { get; set; }
+        public int rowID { get; set; }
         [Required]
-        public int slot { get; set; }
+        public int row { get; set; }
     }
 }

@@ -6,11 +6,14 @@ using System.Web;
 
 namespace awareHouse.Models
 {
-    public class Bay
+    public class Height
     {
         [Key]
-        public int bayID { get; set; }
+        public int heightID { get; set; }
         [Required]
-        public int bay { get; set; }
+        public int height { get; set; }
+        public int rowID { get; set; }
+        [Required]
+        public Row Row { get; set; }
     }
 }
