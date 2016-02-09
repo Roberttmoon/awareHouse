@@ -12,10 +12,9 @@ namespace awareHouse.Models
         public int slotID { get; set; }
         [Required]
         public int slot { get; set; }
-        public int bayID { get; set; }
+        public int bayFK { get; set; }
         [Required]
-        public Bay Bay { get; set; }
-
+        public virtual Bay Bay { get; set; }
         public bool awaitingPallet { get; set; }
         public bool lockoutTagout { get; set; }
     }

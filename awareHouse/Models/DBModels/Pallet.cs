@@ -13,8 +13,11 @@ namespace awareHouse.Models
         [Required]
         public DateTime inDate { get; set; }
         public DateTime outDate { get; set; }
-        public int customerID { get; set; }
+        public int customerFK { get; set; }
         [Required]
-        public Customer Customer { get; set; }
+        public virtual Customer Customer { get; set; }
+        //public int slotFK { get; set; }
+        //[Required]
+        //public Slot Slot { get; set; }
     }
 }

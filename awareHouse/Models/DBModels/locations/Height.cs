@@ -12,8 +12,8 @@ namespace awareHouse.Models
         public int heightID { get; set; }
         [Required]
         public int height { get; set; }
-        public int rowID { get; set; }
+        public int rowFK { get; set; }
         [Required]
-        public Row Row { get; set; }
+        public virtual Row Row { get; set; }
     }
 }

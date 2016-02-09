@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace awareHouse.Models
 {
@@ -23,11 +24,36 @@ namespace awareHouse.Models
         public ApplicationDbContext()
             : base("awareHouse", throwIfV1Schema: false)
         {
+
+
         }
+
+
 
         public static ApplicationDbContext Create()
         {
+            
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<awareHouse.Models.City> Cities { get; set; }
+        public System.Data.Entity.DbSet<awareHouse.Models.ZipCode> ZipCode { get; set; }
+        public System.Data.Entity.DbSet<awareHouse.Models.State> State { get; set; }
+        public System.Data.Entity.DbSet<awareHouse.Models.StreetAddress> StreetAddress { get; set; }
+
+        public System.Data.Entity.DbSet<awareHouse.Models.Row> Row { get; set; }
+        public System.Data.Entity.DbSet<awareHouse.Models.Height> Height { get; set; }
+        public System.Data.Entity.DbSet<awareHouse.Models.Bay> Bay { get; set; }
+        public System.Data.Entity.DbSet<awareHouse.Models.Slot> Slot { get; set; }
+
+        public System.Data.Entity.DbSet<awareHouse.Models.Employee> Employee { get; set; }
+        public System.Data.Entity.DbSet<awareHouse.Models.EmployeeAddress> EmployeeAddress { get; set; }
+
+        public System.Data.Entity.DbSet<awareHouse.Models.Customer> Customers { get; set; }
+        public System.Data.Entity.DbSet<awareHouse.Models.CustomerAddress> CustomerAddress { get; set; }
+
+        public System.Data.Entity.DbSet<awareHouse.Models.Pallet> Pallets { get; set; }
+        public System.Data.Entity.DbSet<awareHouse.Models.Touch> Touch { get; set; }
+
     }
 }

@@ -10,11 +10,11 @@ namespace awareHouse.Models
     {
         [Key]
         public int customerAddressID { get; set; }
-        public int customerID { get; set; }
+        public int customerFK { get; set; }
         [Required]
-        public Customer Customer { get; set; }
-        public int addressID { get; set; }
+        public virtual Customer Customer { get; set; }
+        public int addressFK { get; set; }
         [Required]
-        public Address Address { get; set; }
+        public virtual Address Address { get; set; }
     }
 }

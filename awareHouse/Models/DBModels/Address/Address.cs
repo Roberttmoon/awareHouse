@@ -10,17 +10,17 @@ namespace awareHouse.Models
     {
         [Key]
         public int addressID { get; set; }
-        public int cityID { get; set; }
+        public int cityFK { get; set; }
         [Required]
-        public City City{get;set;}
-        public int stateID { get; set; }
+        public virtual City City {get;set;}
+        public int stateFK { get; set; }
         [Required]
-        public State State{get;set;}
-        public int streetAddressID { get; set; }
+        public virtual State State{get;set;}
+        public int streetAddressFK { get; set; }
         [Required]
-        public StreetAddress StreetAddress { get;set;}
-        public int zipCodeID { get; set; }
+        public virtual StreetAddress StreetAddress { get;set;}
+        public int zipCodeFK { get; set; }
         [Required]
-        public ZipCode ZipCode {get;set;}
+        public virtual ZipCode ZipCode {get;set;}
 }
 }
