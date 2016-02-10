@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace awareHouse.Models
 {
@@ -48,7 +49,6 @@ namespace awareHouse.Models
 
     public class LoginViewModel
     {
-        [Required]
         [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
@@ -64,6 +64,10 @@ namespace awareHouse.Models
 
     public class RegisterViewModel
     {
+        [NotMapped]
+        [Display(Name = "Employee Name")]
+        public string employeeName { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

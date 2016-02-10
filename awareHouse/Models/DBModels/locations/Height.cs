@@ -12,8 +12,8 @@ namespace awareHouse.Models
         public int heightID { get; set; }
         [Required]
         public int height { get; set; }
-        public int rowFK { get; set; }
+        public int bayFK { get; set; }
         [Required]
-        public virtual Row Row { get; set; }
+        public virtual Bay Bay { get; set; }
     }
 }

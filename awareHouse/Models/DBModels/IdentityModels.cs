@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System.ComponentModel.DataAnnotations;
 
 namespace awareHouse.Models
 {
@@ -17,6 +18,8 @@ namespace awareHouse.Models
             // Add custom user claims here
             return userIdentity;
         }
+        public int employeeFK { get; set; }
+        public virtual Employee Employee { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

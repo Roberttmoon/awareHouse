@@ -151,10 +151,17 @@ namespace awareHouse.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var employee = new Employee { employeeName = model.employeeName };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, employeeFK = employee.employeeID };
                 var result = await UserManager.CreateAsync(user, model.Password);
+                
                 if (result.Succeeded)
                 {
+                    using (ApplicationDbContext db = new ApplicationDbContext())
+                    {
+                        db.Employee.Add(employee);
+                        db.SaveChanges();
+                    }
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
