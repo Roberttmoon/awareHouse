@@ -10,6 +10,8 @@ namespace awareHouse.Models
     {
         [Key]
         public int buildingID { get; set; }
-        public int buliding { get; set; }
+        public string buildingName { get; set; }
+
+        public virtual ICollection<Row> Rows { get; set; }
     }
 }

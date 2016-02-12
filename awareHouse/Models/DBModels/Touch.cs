@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -11,14 +12,20 @@ namespace awareHouse.Models
         [Key]
         public int touchID { get; set; }
         public DateTime touchTime { get; set; }
-        public int slotFK { get; set; }
+
         [Required]
+        [ForeignKey("Slot")]
+        public int SlotID { get; set; }
         public Slot Slot { get; set; }
-        public int palletFK { get; set; }
+
         [Required]
+        [ForeignKey("Pallet")]
+        public int PalletID { get; set; }
         public virtual Pallet Pallet { get; set; }
-        public int employeeFK { get; set; }
+
         [Required]
+        [ForeignKey("Employee")]
+        public int EmployeeID { get; set; }
         public virtual Employee Employee { get; set; }
     }
 }

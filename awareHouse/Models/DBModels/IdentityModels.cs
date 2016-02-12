@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace awareHouse.Models
 {
@@ -18,8 +19,9 @@ namespace awareHouse.Models
             // Add custom user claims here
             return userIdentity;
         }
-        public int employeeFK { get; set; }
-        public virtual Employee Employee { get; set; }
+        //[ForeignKey("Employee")]
+        //public int EmployeeID { get; set; }
+        //public virtual Employee Employee { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -44,9 +46,10 @@ namespace awareHouse.Models
         public System.Data.Entity.DbSet<awareHouse.Models.State> State { get; set; }
         public System.Data.Entity.DbSet<awareHouse.Models.StreetAddress> StreetAddress { get; set; }
 
+        public DbSet<awareHouse.Models.Building> Building { get; set; }
         public System.Data.Entity.DbSet<awareHouse.Models.Row> Row { get; set; }
-        public System.Data.Entity.DbSet<awareHouse.Models.Height> Height { get; set; }
         public System.Data.Entity.DbSet<awareHouse.Models.Bay> Bay { get; set; }
+        public System.Data.Entity.DbSet<awareHouse.Models.Height> Height { get; set; }
         public System.Data.Entity.DbSet<awareHouse.Models.Slot> Slot { get; set; }
 
         public System.Data.Entity.DbSet<awareHouse.Models.Employee> Employee { get; set; }

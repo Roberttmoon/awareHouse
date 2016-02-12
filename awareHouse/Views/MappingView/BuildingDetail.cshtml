@@ -1,0 +1,30 @@
+﻿@model IEnumerable<awareHouse.Models.MappingViewModel>
+@{
+    ViewBag.Title = "BuildingDetail";
+}
+
+<h2>Building Details for @Html.DisplayNameFor(model => model.First().building.buildingName) </h2>
+
+<p>@Html.ActionLink("Add a new Asile", "CreateRow", new { id = Model.First().building.buildingID } )</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().row.rowNumber)
+        </th>
+        <th>
+            Edit Asile Data
+        </th>
+    </tr>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.row.rowNumber)
+            </td>
+            <td>
+                @Html.ActionLink("Detail", "RowDetail", new { id = item.row.rowID})
+            </td>
+        </tr>
+        }
+</table>

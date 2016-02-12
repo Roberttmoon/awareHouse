@@ -151,9 +151,9 @@ namespace awareHouse.Controllers
         {
             if (ModelState.IsValid)
             {
-                var employee = new Employee { employeeName = model.employeeName };
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, employeeFK = employee.employeeID };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
+                var employee = new Employee { employeeName = model.employeeName};
                 
                 if (result.Succeeded)
                 {

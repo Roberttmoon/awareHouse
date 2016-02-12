@@ -195,13 +195,16 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\BuilderController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
+    <Compile Include="Controllers\MappingVeiwController.cs" />
     <Compile Include="Controllers\MVCdefualt\AccountController.cs" />
     <Compile Include="Controllers\MVCdefualt\HomeController.cs" />
     <Compile Include="Controllers\MVCdefualt\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Logic\SlotLogic.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DBModels\locations\Building.cs" />
     <Compile Include="Models\DBModels\Address\CustomerAddress.cs" />
@@ -285,9 +288,21 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\MappingView\Index.cshtml" />
+    <Content Include="Views\Employees\Create.cshtml" />
+    <Content Include="Views\Employees\Delete.cshtml" />
+    <Content Include="Views\Employees\Details.cshtml" />
+    <Content Include="Views\Employees\Edit.cshtml" />
+    <Content Include="Views\Employees\Index.cshtml" />
+    <Content Include="Views\MappingView\CreateBuilding.cshtml" />
+    <Content Include="Views\MappingView\Delete.cshtml" />
+    <Content Include="Views\MappingView\BuildingDetail.cshtml" />
+    <Content Include="Views\MappingView\CreateRow.cshtml" />
+    <Content Include="Views\MappingView\RowDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Builder\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

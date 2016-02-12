@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -15,19 +16,19 @@ namespace awareHouse.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Employees
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View(db.Employee.ToList());
+            return View(await db.Employee.ToListAsync());
         }
 
         // GET: Employees/Details/5
-        public ActionResult Details(int? id)
+        public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employee.Find(id);
+            Employee employee = await db.Employee.FindAsync(id);
             if (employee == null)
             {
                 return HttpNotFound();
@@ -46,12 +47,12 @@ namespace awareHouse.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "employeeID,employeeName")] Employee employee)
+        public async Task<ActionResult> Create([Bind(Include = "employeeID,employeeName,UserId")] Employee employee)
         {
             if (ModelState.IsValid)
             {
                 db.Employee.Add(employee);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
@@ -59,13 +60,13 @@ namespace awareHouse.Controllers
         }
 
         // GET: Employees/Edit/5
-        public ActionResult Edit(int? id)
+        public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employee.Find(id);
+            Employee employee = await db.Employee.FindAsync(id);
             if (employee == null)
             {
                 return HttpNotFound();
@@ -78,25 +79,25 @@ namespace awareHouse.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "employeeID,employeeName")] Employee employee)
+        public async Task<ActionResult> Edit([Bind(Include = "employeeID,employeeName,UserId")] Employee employee)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(employee).State = EntityState.Modified;
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(employee);
         }
 
         // GET: Employees/Delete/5
-        public ActionResult Delete(int? id)
+        public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employee.Find(id);
+            Employee employee = await db.Employee.FindAsync(id);
             if (employee == null)
             {
                 return HttpNotFound();
@@ -107,11 +108,11 @@ namespace awareHouse.Controllers
         // POST: Employees/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Employee employee = db.Employee.Find(id);
+            Employee employee = await db.Employee.FindAsync(id);
             db.Employee.Remove(employee);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 

@@ -12,6 +12,10 @@ namespace awareHouse.Models
         [Key]
         public int employeeID { get; set; }
         public string employeeName { get; set; }
-        public string UserId { get; set; }
+
+        //[Required]
+        //[ForeignKey("ApplicationUser")]
+        //public string UserID { get; set; }
+        //public virtual ApplicationUser User { get; set; }
     }
 }

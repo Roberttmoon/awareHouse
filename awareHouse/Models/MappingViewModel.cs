@@ -8,13 +8,17 @@ namespace awareHouse.Models
 {
     public class MappingViewModel
     {
+        [Display(Name = "Building Name")]
+        public Building building { get; set; }
         [Display(Name = "Number of rows")]
-        public int row { get; set; }
+        public Row row { get; set; }
         [Display(Name = "Number of bays per row")]
-        public int bays { get; set; }
+        public Bay bays { get; set; }
         [Display(Name = "Shelves per Bay")]
-        public int height { get; set; }
+        public Height height { get; set; }
         [Display(Name = "Pallet spots per Shelf")]
-        public int slots { get; set; }
+        public Slot slots { get; set; }
+        public int stupidHolderTHingy { get; set; }
+        public int anotherHolderThingy { get; set; }
     }
 }

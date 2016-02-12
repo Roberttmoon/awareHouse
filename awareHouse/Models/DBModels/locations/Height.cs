@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -11,9 +12,13 @@ namespace awareHouse.Models
         [Key]
         public int heightID { get; set; }
         [Required]
-        public int height { get; set; }
-        public int bayFK { get; set; }
+        public int heightNumber { get; set; }
+
         [Required]
+        [ForeignKey("Bay")]
+        public int BayID { get; set; }
         public virtual Bay Bay { get; set; }
+
+        public ICollection<Slot> Slots { get; set; }
     }
 }
