@@ -14,6 +14,9 @@ namespace awareHouse.Models
         [Required]
         public int rowNumber { get; set; }
 
+        [NotMapped]
+        public int numberOfBays { get; set; }
+
         [Required]
         [ForeignKey("Building")]
         public int BuildingID { get; set; }

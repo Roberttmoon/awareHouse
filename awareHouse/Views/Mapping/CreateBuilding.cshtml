@@ -4,20 +4,26 @@
     ViewBag.Title = "CreateBuilding";
 }
 
-<h2>Create</h2>
+<h2>Make A new building map</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Make a new building.</h4>
+        <h4>enter building details.</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.building.buildingName, htmlAttributes: new { @class = "control-label col-md-2" })
+            Name the building:
             <div class="col-md-10">
                 @Html.EditorFor(model => model.building.buildingName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.building.buildingName, "", new { @class = "text-danger" })
+            </div>
+            Enter the number of rows of racking:
+            (please note that each face of a path is it's own row)
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.countHolder, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.building.buildingName, "", new { @class = "text-danger" })
             </div>
         </div>

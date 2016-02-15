@@ -18,7 +18,7 @@ namespace awareHouse.Models
         public Height height { get; set; }
         [Display(Name = "Pallet spots per Shelf")]
         public Slot slots { get; set; }
-        public int stupidHolderTHingy { get; set; }
-        public int anotherHolderThingy { get; set; }
+        public int countHolder { get; set; }
+        public int secondHolder { get; set; }
     }
 }

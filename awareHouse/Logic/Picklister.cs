@@ -2,17 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Web;
-using System.Web.Mvc;
 
-namespace awareHouse.Controllers
+namespace awareHouse.Logic
 {
-    public class BuilderController : Controller
+    public class Picklister
     {
         ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: CreateBuilding
- 
+        public void MakePicklist()
+        {
+
+        }
     }
 }

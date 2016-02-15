@@ -22,5 +22,7 @@ namespace awareHouse.Models
         //public int slotFK { get; set; }
         //[Required]
         //public Slot Slot { get; set; }
+
+        public virtual Picklist Picklist { get; set; }
     }
 }

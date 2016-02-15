@@ -1,0 +1,32 @@
+﻿@model IEnumerable<awareHouse.Models.MappingViewModel>
+
+@{
+    ViewBag.Title = "SelectBuilding";
+}
+
+<h2>SelectBuilding</h2>
+
+<table>
+    <tr>
+        <th>
+            Builidng name
+        </th>
+        <th></th>
+        <th>
+            View Building Details
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayName(item.building.buildingName)
+            </td>
+            <td></td>
+            <td>
+                @Html.ActionLink("This building's details", "BuildingDetail", new {id = item.building.buildingID} )
+            </td>
+        </tr>
+    }
+
+</table>

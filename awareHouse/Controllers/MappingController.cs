@@ -11,16 +11,21 @@ using awareHouse.Models;
 
 namespace awareHouse.Controllers
 {
-    public class MappingViewController : Controller
+    public class MappingController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
+        #region selectBuilding
         // GET: Mapping
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> SelectBuilding()
         {
-            if (!db.Building.Any())
-            {
+            int buildingCount = db.Building.Count();
+            if (buildingCount < 1)
                 return RedirectToAction("CreateBuilding");
+            else if (buildingCount == 1)
+            {
+                Building building = await db.Building.FindAsync(db.Building.First().buildingID);
+                MappingViewModel mvmBuilding = new MappingViewModel { building = building };
+                return RedirectToAction("BuildingDetail", mvmBuilding);
             }
             List<Building> buildingList = new List<Building>();
             buildingList = await db.Building.ToListAsync();
@@ -33,7 +38,37 @@ namespace awareHouse.Controllers
             }
             return View(mvm);
         }
+        #endregion
+        public ActionResult CreateBuilding()
+        {
+            return View();
+        }
 
+        #region Create Building
+
+        [HttpPost]
+        // POST: CreateBuilding
+        public async Task<ActionResult> CreateBuilding(MappingViewModel mvmItem)
+        {
+            Building building = new Building { buildingName = mvmItem.building.buildingName };
+            if (ModelState.IsValid)
+            {
+                db.Building.Add(building);
+                await db.SaveChangesAsync();
+            }
+            for (int i = mvmItem.countHolder; i > 0; i--)
+            {
+                Row row = new Row { Building = building, rowNumber = i };
+                if (ModelState.IsValid)
+                {
+                    db.Row.Add(row);
+                    await db.SaveChangesAsync();
+                }
+            }
+            return View("BuildingDetail");
+        }
+
+        #endregion
         // GET: Mapping/Details/5
         //public async Task<ActionResult> Details(int? id)
         //{
@@ -50,30 +85,6 @@ namespace awareHouse.Controllers
         //    }
         //    return View(rows);
         //}
-
-        // GET: Mapping/Create
-        public ActionResult CreateBuilding()
-        {
-            return View();
-        }
-
-        // POST: Mapping/CreateBuilding
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CreateBuilding(MappingViewModel newBuilding)
-        {
-            Building building = new Building { buildingName = newBuilding.building.buildingName };
-            if (ModelState.IsValid)
-            {
-                db.Building.Add(building);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
-
-            return View(building);
-        }
 
         //// GET: Employees/Edit/5
         //public async Task<ActionResult> Edit(int? id)
@@ -111,7 +122,7 @@ namespace awareHouse.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+               View("SelectBuilding");
             }
             Building building = await db.Building.FindAsync(id);
             if (building == null)
@@ -130,7 +141,7 @@ namespace awareHouse.Controllers
             Building building = await db.Building.FindAsync(id);
             db.Building.Remove(building);
             await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("SelectBuilding");
         }
 
         protected override void Dispose(bool disposing)
@@ -143,17 +154,14 @@ namespace awareHouse.Controllers
         }
         public async Task<ActionResult> BuildingDetail(int? id)
         {
+            Building building;
             if (id == null)
             {
-                return View("Index");
+                return RedirectToAction("SelectBuilding");
             }
+            building = await db.Building.FindAsync(id);
             List<MappingViewModel> mvmItems = new List<MappingViewModel>();
-            Building building = await db.Building.FindAsync(id);
             List<Row> rows = db.Row.Where(r => r.BuildingID == id).ToList();
-            if (rows.Count == 0)
-            {
-                return RedirectToAction("CreateRow", new { id = id });
-            }
             for (int i = 0; i < rows.Count; i++)
             {
                 MappingViewModel mapItem = new MappingViewModel { building = building, row = rows[i] };
@@ -167,32 +175,6 @@ namespace awareHouse.Controllers
             return View("CreateRow");
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CreateRow(int? id, MappingViewModel mapItem)
-        {
-            if(id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Row row = new Row { BuildingID = (int)id, rowNumber = mapItem.row.rowNumber };
-            if (ModelState.IsValid)
-            {
-                db.Row.Add(row);
-                await db.SaveChangesAsync();
-            }
-            List<Bay> bays = BayMaker(row, mapItem);
-            foreach (Bay b in bays)
-            {
-                if (ModelState.IsValid)
-                {
-                    db.Bay.Add(b);
-                    await db.SaveChangesAsync();
-                }
-            }
-            List<MappingViewModel> mapReturnItems = BayMapper(bays);
-            return View("Index", mapReturnItems);
-        }
         private List<MappingViewModel> BayMapper(List<Bay> bays)
         {
             List<MappingViewModel> mapReturnItems = new List<MappingViewModel>();
@@ -206,7 +188,7 @@ namespace awareHouse.Controllers
         private List<Bay> BayMaker(Row row, MappingViewModel mapItem)
         {
             List<Bay> bays = new List<Bay>();
-            for (int i = 0; i < mapItem.stupidHolderTHingy; i++)
+            for (int i = 0; i < mapItem.countHolder; i++)
             {
                 Bay bay = new Bay { rowID = row.rowID, bayNumber = i + 1 };
                 bays.Add(bay);
