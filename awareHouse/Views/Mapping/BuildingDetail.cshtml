@@ -3,17 +3,20 @@
     ViewBag.Title = "BuildingDetail";
 }
 
-<h2>Building Details for @Html.DisplayNameFor(model => model.First().building.buildingName) </h2>
+<h2>Building Details for @Model.First().building.buildingName </h2>
 
 <p>@*@Html.ActionLink("Add a new Asile", "CreateRow", new { id = Model.First().building.buildingID })*@</p>
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.First().row.rowNumber)
+            Rows
         </th>
         <th>
-            Edit Asile Data
+            Number of Bays
+        </th>
+        <th>
+            View Details
         </th>
     </tr>
     @for (int i =0; i < Model.Count(); i++)
@@ -21,6 +24,9 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => Model[i].row.rowNumber)
+            </td>
+            <td>
+                @Model[i].row.Bays.Count()
             </td>
             <td>
                 @Html.ActionLink("Detail", "RowDetail", new { id = Model[i].row.rowID })

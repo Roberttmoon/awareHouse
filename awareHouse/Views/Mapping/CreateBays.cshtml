@@ -1,0 +1,36 @@
+﻿@model IEnumerable<awareHouse.Models.MappingViewModel>
+
+@{
+    ViewBag.Title = "RowDetails";
+}
+
+<h2>Asile Detail</h2>
+
+    <table class="table form-group">
+        <tr>
+            <th>
+                Bay number
+            </th>
+            <th>
+                Shelves
+            </th>
+            <th>
+                Pallet spaces
+            </th>
+        </tr>
+        @foreach (var item in Model) {
+           <tr>
+                <td>
+                    @Html.DisplayFor(modelitem => item.bays.bayNumber)
+                </td>
+                <td>
+                    @Html.DisplayName(item.bays.bayNumber.ToString())
+                    @Html.ActionLink("View Bay Detials", "BayDetails", new { id = item.bays.bayID })
+                </td>
+                <td>
+                    @Html.EditorFor(Model => item.height.numberOfSlots, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(Model => item.height.numberOfSlots, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+        }
+    </table>

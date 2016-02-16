@@ -204,8 +204,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Logic\CreateBuilding.cs" />
+    <Compile Include="Logic\MappingLogic\CreateBuilding.cs" />
     <Compile Include="Logic\Pathfinder.cs" />
+    <Compile Include="Logic\MappingLogic\RowDetailLogic.cs" />
+    <Compile Include="Logic\MappingLogic\PopulateBayLogic.cs" />
     <Compile Include="Logic\SlotLogic.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DBModels\locations\Building.cs" />
@@ -295,7 +297,10 @@
     <Content Include="Views\Mapping\CreateBuilding.cshtml" />
     <Content Include="Views\Mapping\BuildingDetail.cshtml" />
     <Content Include="Views\Mapping\SelectBuilding.cshtml" />
-    <Content Include="Views\Mapping\RowDetails.cshtml" />
+    <Content Include="Views\Mapping\CreateBays.cshtml" />
+    <Content Include="Views\Mapping\RowDetail.cshtml" />
+    <Content Include="Views\Mapping\AddBays.cshtml" />
+    <Content Include="Views\Mapping\PopulateBays.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

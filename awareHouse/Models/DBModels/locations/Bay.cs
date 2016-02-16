@@ -15,6 +15,8 @@ namespace awareHouse.Models
 
         [NotMapped]
         public int numberOfHeights { get; set; }
+        [NotMapped]
+        public int numberOfSlots { get; set; }
 
         [Required]
         [ForeignKey("Row")]

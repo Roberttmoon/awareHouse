@@ -17,7 +17,7 @@ namespace awareHouse.Models
 
         [Required]
         [ForeignKey("Height")]
-        public int heightFK { get; set; }
+        public int heightID { get; set; }
         public virtual Height Height { get; set; }
 
         public bool awaitingPallet { get; set; }

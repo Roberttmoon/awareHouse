@@ -1,0 +1,33 @@
+﻿@model IEnumerable<awareHouse.Models.MappingViewModel>
+@{
+    ViewBag.Title = "RowDetail";
+}
+
+<h2>Row Details</h2>
+
+<table>
+    <tr>
+        <th>Bay Number</th>
+        <th>Number of shelves</th>
+        <th>Pallet Spots/shelf</th>
+     </tr>
+    
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.bays.bayNumber.ToString()
+            </td>
+            @if(item.bays.numberOfHeights == 0)
+            {
+                <td>@Html.ActionLink("Enter Shelves and Pallet Spots", "PopulateBays", new { id = item.bays.bayID } )</td>
+            }
+            else
+            {
+            <td>@item.bays.numberOfHeights</td>
+            <td>@item.bays.numberOfSlots</td>
+            }
+        </tr>
+    }
+
+</table>

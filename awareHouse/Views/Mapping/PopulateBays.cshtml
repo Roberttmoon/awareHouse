@@ -1,0 +1,29 @@
+﻿@model awareHouse.Models.MappingViewModel
+
+@{
+    ViewBag.Title = "PopulateBays";
+}
+
+<h2>Add height and pallet spots to bay</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.EditorFor(model => model.bays.numberOfHeights, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.row.numberOfBays, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.EditorFor(model => model.bays.numberOfSlots, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.row.numberOfBays, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+}
+
+
