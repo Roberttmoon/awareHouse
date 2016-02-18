@@ -27,5 +27,9 @@ namespace awareHouse.Models
         [ForeignKey("Employee")]
         public int EmployeeID { get; set; }
         public virtual Employee Employee { get; set; }
+
+        [ForeignKey("Route")]
+        public int routeID { get; set; }
+        public virtual Route Route { get; set; }
     }
 }

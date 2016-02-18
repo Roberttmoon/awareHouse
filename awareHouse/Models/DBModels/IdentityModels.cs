@@ -61,5 +61,6 @@ namespace awareHouse.Models
         public System.Data.Entity.DbSet<awareHouse.Models.Pallet> Pallets { get; set; }
         public System.Data.Entity.DbSet<awareHouse.Models.Touch> Touch { get; set; }
 
+        public System.Data.Entity.DbSet<Picklist> Picklist { get; set; }
     }
 }

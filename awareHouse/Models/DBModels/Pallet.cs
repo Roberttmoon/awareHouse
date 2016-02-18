@@ -23,6 +23,9 @@ namespace awareHouse.Models
         //[Required]
         //public Slot Slot { get; set; }
 
+        public bool awaitingPick { get; set; } = false;
+        public bool picked { get; set; } = false;
+        public int picklistID { get; set; }
         public virtual Picklist Picklist { get; set; }
     }
 }
