@@ -20,7 +20,8 @@ namespace awareHouse.Models
         public int heightID { get; set; }
         public virtual Height Height { get; set; }
 
-        public bool awaitingPallet { get; set; }
-        public bool lockoutTagout { get; set; }
+        public bool isAwaitingPallet { get; set; }
+        public bool isLockoutTagout { get; set; }
+        public bool isOccupied { get; set; }
     }
 }

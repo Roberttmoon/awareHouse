@@ -209,7 +209,7 @@
     <Compile Include="Logic\DriverLogic\Pathfinder.cs" />
     <Compile Include="Logic\MappingLogic\RowDetailLogic.cs" />
     <Compile Include="Logic\MappingLogic\PopulateBayLogic.cs" />
-    <Compile Include="Logic\SlotLogic.cs" />
+    <Compile Include="Logic\DriverLogic\SlotLogic.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DBModels\locations\Building.cs" />
     <Compile Include="Models\DBModels\Address\CustomerAddress.cs" />
@@ -218,6 +218,7 @@
     <Compile Include="Models\DBModels\Customer.cs" />
     <Compile Include="Models\DBModels\Employee.cs" />
     <Compile Include="Models\DBModels\locations\Bay.cs" />
+    <Compile Include="Models\DBModels\locations\Dock.cs" />
     <Compile Include="Models\DBModels\locations\Height.cs" />
     <Compile Include="Models\DBModels\Pallet.cs" />
     <Compile Include="Models\DBModels\Picklist.cs" />

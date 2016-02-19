@@ -15,6 +15,10 @@ namespace awareHouse.Models
         public DateTime inDate { get; set; }
         public DateTime outDate { get; set; }
 
+        //[ForeignKey("Dock")]
+        //public int DockID { get; set; }
+        //public virtual Dock Dock { get; set; }
+
         [Required]
         [ForeignKey("Customer")]
         public int CustomerID { get; set; }

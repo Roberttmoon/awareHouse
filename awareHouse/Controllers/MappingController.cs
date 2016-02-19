@@ -84,9 +84,11 @@ namespace awareHouse.Controllers
         public async Task<ActionResult> CreateBuilding(MappingViewModel mvmItem)
         {
             Building building = new Building { buildingName = mvmItem.building.buildingName };
+            Dock dock = new Dock { Building = building };
             if (ModelState.IsValid)
             {
                 db.Building.Add(building);
+                db.Dock.Add(dock);
                 await db.SaveChangesAsync();
             }
             for (int i = mvmItem.countHolder; i > 0; i--)

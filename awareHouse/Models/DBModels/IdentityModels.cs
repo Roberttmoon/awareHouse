@@ -47,6 +47,7 @@ namespace awareHouse.Models
         public System.Data.Entity.DbSet<awareHouse.Models.StreetAddress> StreetAddress { get; set; }
 
         public DbSet<awareHouse.Models.Building> Building { get; set; }
+        public DbSet<awareHouse.Models.Dock> Dock { get; set; }
         public System.Data.Entity.DbSet<awareHouse.Models.Row> Row { get; set; }
         public System.Data.Entity.DbSet<awareHouse.Models.Bay> Bay { get; set; }
         public System.Data.Entity.DbSet<awareHouse.Models.Height> Height { get; set; }
